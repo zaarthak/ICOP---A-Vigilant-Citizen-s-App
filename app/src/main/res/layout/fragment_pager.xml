@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sarthak.icop.icop.fragments.PagerFragment">
+
+    <!-- ViewPager -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Footer -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/dot_one"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="3dp"
+                android:background="@null"
+                android:src="@drawable/rounded_cell_dark" />
+
+            <ImageView
+                android:id="@+id/dot_two"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="3dp"
+                android:background="@null"
+                android:src="@drawable/rounded_cell_light" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

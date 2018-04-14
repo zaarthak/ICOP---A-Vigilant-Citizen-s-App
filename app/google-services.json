@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "110690519962",
+    "firebase_url": "https://icop-34974.firebaseio.com",
+    "project_id": "icop-34974",
+    "storage_bucket": "icop-34974.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110690519962:android:7e2ab66d763c1607",
+        "android_client_info": {
+          "package_name": "com.sarthak.icop.icop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110690519962-evvn39o5qkj620ogthobc8bbc8rn7ndt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sarthak.icop.icop",
+            "certificate_hash": "368b15c9a7d9f44df3b42ffbdd65eb4e1f45cb11"
+          }
+        },
+        {
+          "client_id": "110690519962-3pq1rujh33bb0gmf8792g5de1h0j8ug1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNwFe-JjKt7Mc4d8yq_ZvvW3F9V04eiq0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110690519962-3pq1rujh33bb0gmf8792g5de1h0j8ug1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

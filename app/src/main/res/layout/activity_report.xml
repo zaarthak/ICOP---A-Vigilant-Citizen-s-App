@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sarthak.icop.icop.activities.ReportActivity">
+
+    <Button
+        android:id="@+id/category_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentTop="true"
+        android:text="--Select category--"
+        android:textAllCaps="false"
+        android:drawableEnd="@mipmap/ic_drop_down"
+        android:background="@drawable/text_bg"/>
+
+    <EditText
+        android:id="@+id/complaint"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/category_list"
+        android:gravity="top"
+        android:hint="Information"
+        android:padding="8dp"
+        android:background="@drawable/text_bg"/>
+
+    <EditText
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/complaint"
+        android:hint="Name, Contact No (Optional)"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:background="@drawable/text_bg"/>
+
+    <ImageView
+        android:id="@+id/report_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/contact"
+        android:layout_above="@+id/layout"
+        android:scaleType="fitCenter"
+        android:layout_margin="10dp"/>
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/send_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/image_btn"
+            android:background="@drawable/btn_bg"
+            android:text="send information"
+            android:paddingEnd="10dp"
+            android:textColor="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_camera"
+            android:paddingStart="10dp"
+            android:background="@null"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
