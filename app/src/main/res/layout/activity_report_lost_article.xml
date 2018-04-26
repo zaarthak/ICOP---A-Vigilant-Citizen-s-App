@@ -49,10 +49,13 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/id"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="text"
+                android:maxLines="1"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -72,10 +75,13 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="text"
+                android:maxLines="1"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -95,10 +101,13 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="textPersonName"
+                android:maxLines="1"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -118,10 +127,13 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/father"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="textPersonName"
+                android:maxLines="1"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -141,10 +153,13 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/address"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="text"
+                android:maxLines="1"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -164,6 +179,7 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/contact"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -188,6 +204,7 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -212,10 +229,12 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="date"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -235,10 +254,12 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="time"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -257,10 +278,12 @@
                 android:layout_gravity="center_vertical"/>
 
             <EditText
+                android:id="@+id/location"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:padding="5dp"
+                android:inputType="textPersonName"
                 android:background="@drawable/et_bg"/>
 
         </LinearLayout>
@@ -275,6 +298,7 @@
         android:padding="10dp">
 
         <Button
+            android:id="@+id/submit_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

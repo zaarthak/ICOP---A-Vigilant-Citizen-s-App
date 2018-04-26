@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sarthak.icop.icop.activities.MapsActivity;
+import com.sarthak.icop.icop.activities.NearbyPlacesActivity;
 import com.sarthak.icop.icop.activities.ReportLostArticleActivity;
 import com.sarthak.icop.icop.activities.SosActivity;
+import com.sarthak.icop.icop.activities.TimerActivity;
 import com.sarthak.icop.icop.adapters.FragmentGridAdapter;
 import com.sarthak.icop.icop.R;
 import com.sarthak.icop.icop.utils.RecyclerViewOnClickListener;
@@ -52,15 +54,15 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
     @Override
     public void onItemClicked(View view, int position) {
 
-        Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
-
+        Intent reportIntent = new Intent(getActivity(), ReportActivity.class);
         Intent callIntent = new Intent(getActivity(), CallActivity.class);
+        Intent mapIntent = new Intent(getActivity(), NearbyPlacesActivity.class);
 
         switch (position) {
 
             case 0:
 
-                startActivity(new Intent(getActivity(), ReportActivity.class));
+                startActivity(reportIntent);
                 break;
 
             case 1:
@@ -88,6 +90,21 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
             case 5:
 
                 startActivity(new Intent(getActivity(), ReportLostArticleActivity.class));
+                break;
+
+            case 6:
+
+                startActivity(new Intent(getActivity(), TimerActivity.class));
+                break;
+
+            case 8:
+
+                startActivity(mapIntent);
+                break;
+
+            default:
+
+                Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

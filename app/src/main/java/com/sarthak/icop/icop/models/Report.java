@@ -8,17 +8,17 @@ public class Report implements Serializable {
     private String category;
     private String information;
     private String contact;
-    private String image;
+    private String status;
 
     public Report() {
     }
 
-    public Report(String id, String category, String information, String contact, String image) {
+    public Report(String id, String category, String information, String contact, String status) {
         this.id = id;
         this.category = category;
         this.information = information;
         this.contact = contact;
-        this.image = image;
+        this.status = status;
     }
 
     public String getId() {
@@ -53,11 +53,11 @@ public class Report implements Serializable {
         this.contact = contact;
     }
 
-    public String getImage() {
-        return image;
+    public String getStatus() {
+        return status;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

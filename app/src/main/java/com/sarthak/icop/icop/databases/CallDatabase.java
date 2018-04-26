@@ -30,6 +30,8 @@ public class CallDatabase extends SQLiteAssetHelper {
             TABLE_NAME = "police";
         } else if (type == 2) {
             TABLE_NAME = "administration";
+        } else if (type == 3) {
+            TABLE_NAME = "emergency";
         }
 
         SQLiteDatabase db = getReadableDatabase();

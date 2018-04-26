@@ -37,15 +37,16 @@ public class PagerFragment extends Fragment {
     private void setUpView(View view){
 
         mViewPager = view.findViewById(R.id.viewPager);
-        pagerAdapter = new ViewPagerAdapter(getActivity(), getActivity().getSupportFragmentManager());
+        pagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         mViewPager.setAdapter(pagerAdapter);
         mViewPager.setCurrentItem(0);
 
         initImageView(view);
     }
+
     private void setTab(){
 
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
 
             @Override
             public void onPageScrollStateChanged(int position) {}

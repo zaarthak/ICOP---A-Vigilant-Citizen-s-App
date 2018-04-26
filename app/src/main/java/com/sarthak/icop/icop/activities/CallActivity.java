@@ -34,15 +34,18 @@ public class CallActivity extends AppCompatActivity {
         if (type == 1) {
 
             getSupportActionBar().setTitle("Call Police");
-        } else {
+        } else if (type == 2){
 
             getSupportActionBar().setTitle("Call Administration");
+        } else {
+
+            getSupportActionBar().setTitle("Emergency Calls");
         }
 
         mDatabase = new CallDatabase(CallActivity.this);
         policeList = mDatabase.getPoliceDetails(type);
 
-        adapter = new CallAdapter(CallActivity.this, policeList);
+        adapter = new CallAdapter(CallActivity.this, policeList, type);
         mCallList = findViewById(R.id.call_police_list);
 
         mCallList.setLayoutManager(new LinearLayoutManager(this));
