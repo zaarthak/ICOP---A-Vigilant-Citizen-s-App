@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.sarthak.icop.icop.activities.MapsActivity;
+import com.sarthak.icop.icop.activities.NearbyPlacesActivity;
+import com.sarthak.icop.icop.activities.PathikActivity;
 import com.sarthak.icop.icop.activities.ReportLostArticleActivity;
 import com.sarthak.icop.icop.activities.SosActivity;
+import com.sarthak.icop.icop.activities.TimerActivity;
 import com.sarthak.icop.icop.adapters.FragmentGridAdapter;
 import com.sarthak.icop.icop.R;
 import com.sarthak.icop.icop.utils.RecyclerViewOnClickListener;
@@ -52,15 +55,15 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
     @Override
     public void onItemClicked(View view, int position) {
 
-        Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
-
+        Intent reportIntent = new Intent(getActivity(), ReportActivity.class);
         Intent callIntent = new Intent(getActivity(), CallActivity.class);
+        Intent mapIntent = new Intent(getActivity(), NearbyPlacesActivity.class);
 
         switch (position) {
 
             case 0:
 
-                startActivity(new Intent(getActivity(), ReportActivity.class));
+                startActivity(reportIntent);
                 break;
 
             case 1:
@@ -89,6 +92,26 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
 
                 startActivity(new Intent(getActivity(), ReportLostArticleActivity.class));
                 break;
+
+            case 6:
+
+                startActivity(new Intent(getActivity(), TimerActivity.class));
+                break;
+
+            case 7:
+
+                startActivity(new Intent(getActivity(), PathikActivity.class));
+                break;
+
+            case 8:
+
+                startActivity(mapIntent);
+                break;
+
+            default:
+
+                Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 
@@ -101,8 +124,8 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
         listItems.add("Help Me !!");
         listItems.add("Report Lost Article");
         listItems.add("Aalamban");
-        listItems.add("Vehicle Search");
-        listItems.add("My Close Group");
+        listItems.add("Pathik");
+        listItems.add("Nearby Places");
 
         imageItems.add(R.drawable.report_an_incident);
         imageItems.add(R.drawable.call_police);
@@ -111,7 +134,7 @@ public class FirstFragment extends Fragment implements RecyclerViewOnClickListen
         imageItems.add(R.drawable.sos);
         imageItems.add(R.drawable.report_lost_article);
         imageItems.add(R.drawable.aalamban);
-        imageItems.add(R.drawable.vehicle_search);
-        imageItems.add(R.drawable.my_close_group);
+        imageItems.add(R.drawable.pathik);
+        imageItems.add(R.drawable.nearby_places);
     }
 }

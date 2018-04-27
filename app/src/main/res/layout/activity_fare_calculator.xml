@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Starting Point"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/text_bg" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter End Point"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/text_bg" >
+
+        <requestFocus />
+
+    </AutoCompleteTextView>
+
+    <Button
+        android:id="@+id/distanceButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Find Fare"
+        android:textColor="@android:color/white"
+        android:background="@drawable/btn_bg"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/distanceTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Distance"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:background="@drawable/text_bg" />
+
+    <EditText
+        android:id="@+id/durationTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Time Duration"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:background="@drawable/text_bg" />
+
+    <EditText
+        android:id="@+id/costTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="Fare in INR"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="phone"
+        android:maxLines="1"
+        android:background="@drawable/text_bg" />
+
+</LinearLayout>

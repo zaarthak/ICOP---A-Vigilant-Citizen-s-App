@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.sarthak.icop.icop.R;
+import com.sarthak.icop.icop.utils.RecyclerViewOnClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,8 +20,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.NavigationDrawerViewHolder> {
 
+    private boolean headsetStatus;
+
     private ArrayList<String> itemList = new ArrayList<>();
     private ArrayList<Integer> imageList = new ArrayList<>();
+
+    private RecyclerViewOnClickListener mListener;
 
     private Context mContext;
 
@@ -31,6 +36,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         this.imageList = imageList;
     }
 
+    public void setOnRecyclerViewItemClickListener(RecyclerViewOnClickListener listener) {
+
+        this.mListener = listener;
+    }
+
     @Override
     public NavigationDrawerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_nav_drawer, parent, false);
@@ -39,9 +49,20 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     @Override
-    public void onBindViewHolder(NavigationDrawerViewHolder holder, int position) {
+    public void onBindViewHolder(final NavigationDrawerViewHolder holder, int position) {
 
         holder.bindView(holder.getAdapterPosition(), itemList.get(holder.getAdapterPosition()), imageList.get(holder.getAdapterPosition()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (holder.getAdapterPosition() == 6) {
+
+                    mListener.onItemClicked(view, holder.getAdapterPosition());
+                }
+            }
+        });
     }
 
     @Override
@@ -70,7 +91,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
                     .load(image)
                     .into(mImage);
 
-            if (pos == 0) {
+            if (pos == 0 || pos == 1 || pos == 2 || pos == 3) {
                 mToggleBtn.setVisibility(View.VISIBLE);
             } else {
                 mToggleBtn.setVisibility(View.GONE);

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.sarthak.icop.icop.activities.PathikActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Know Your Driver"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/badge_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Badge Number"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/text_bg"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/vehicle_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DL 1S BY 8439"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:padding="8dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="@drawable/text_bg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Search"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_bg"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/inform_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Inform about travel"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/btn_bg"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

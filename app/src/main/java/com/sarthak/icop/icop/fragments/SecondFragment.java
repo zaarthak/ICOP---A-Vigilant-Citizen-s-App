@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.sarthak.icop.icop.activities.CallActivity;
+import com.sarthak.icop.icop.activities.FareCalculatorActivity;
 import com.sarthak.icop.icop.activities.ReportFetchActivity;
 import com.sarthak.icop.icop.activities.TowedVehicleActivity;
 import com.sarthak.icop.icop.activities.WebActivity;
@@ -50,12 +52,18 @@ public class SecondFragment extends Fragment implements RecyclerViewOnClickListe
     @Override
     public void onItemClicked(View view, int position) {
 
-        Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
-
+        Intent callIntent = new Intent(getActivity(), CallActivity.class);
         Intent fetchIntent = new Intent(getActivity(), ReportFetchActivity.class);
         Intent webIntent = new Intent(getActivity(), WebActivity.class);
+        Intent fareIntent = new Intent(getActivity(), FareCalculatorActivity.class);
 
         switch (position) {
+
+            case 0:
+
+                callIntent.putExtra("type", 3);
+                startActivity(callIntent);
+                break;
 
             case 1:
 
@@ -66,6 +74,11 @@ public class SecondFragment extends Fragment implements RecyclerViewOnClickListe
             case 2:
 
                 startActivity(new Intent(getActivity(), TowedVehicleActivity.class));
+                break;
+
+            case 3:
+
+                startActivity(fareIntent);
                 break;
 
             case 4:
@@ -96,6 +109,11 @@ public class SecondFragment extends Fragment implements RecyclerViewOnClickListe
 
                 webIntent.putExtra("type", 4);
                 startActivity(webIntent);
+                break;
+
+            default:
+
+                Toast.makeText(getActivity(), listItems.get(position), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

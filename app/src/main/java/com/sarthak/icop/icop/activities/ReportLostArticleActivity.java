@@ -4,10 +4,13 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sarthak.icop.icop.R;
 
@@ -19,6 +22,10 @@ public class ReportLostArticleActivity extends AppCompatActivity implements View
     private ArrayAdapter<String> adapter;
 
     private Button mListBtn;
+    private Button mSubmitBtn;
+
+    private EditText mIdEt, mMobileEt, mNameEt, mFatherEt, mAddressEt, mContactEt,
+            mEmailEt, mDateEt, mTimeEt, mLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +37,21 @@ public class ReportLostArticleActivity extends AppCompatActivity implements View
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, categoryItems);
         mListBtn = findViewById(R.id.list);
+        mSubmitBtn = findViewById(R.id.submit_btn);
+
+        mIdEt = findViewById(R.id.id);
+        mMobileEt = findViewById(R.id.mobile);
+        mNameEt = findViewById(R.id.name);
+        mFatherEt = findViewById(R.id.father);
+        mAddressEt = findViewById(R.id.address);
+        mContactEt = findViewById(R.id.contact);
+        mEmailEt = findViewById(R.id.email);
+        mDateEt = findViewById(R.id.date);
+        mTimeEt = findViewById(R.id.time);
+        mLocation = findViewById(R.id.location);
+
         mListBtn.setOnClickListener(this);
+        mSubmitBtn.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +73,34 @@ public class ReportLostArticleActivity extends AppCompatActivity implements View
                             }
                         }).create().show();
                 break;
+
+            case R.id.submit_btn:
+
+                if (TextUtils.isEmpty(mIdEt.getText().toString()) ||
+                        TextUtils.isEmpty(mMobileEt.getText().toString()) ||
+                        TextUtils.isEmpty(mNameEt.getText().toString()) ||
+                        TextUtils.isEmpty(mFatherEt.getText().toString()) ||
+                        TextUtils.isEmpty(mAddressEt.getText().toString()) ||
+                        TextUtils.isEmpty(mContactEt.getText().toString()) ||
+                        TextUtils.isEmpty(mEmailEt.getText().toString()) ||
+                        TextUtils.isEmpty(mDateEt.getText().toString()) ||
+                        TextUtils.isEmpty(mTimeEt.getText().toString()) ||
+                        TextUtils.isEmpty(mLocation.getText().toString())) {
+
+                } else {
+
+                    mIdEt.setText("");
+                    mMobileEt.setText("");
+                    mNameEt.setText("");
+                    mFatherEt.setText("");
+                    mAddressEt.setText("");
+                    mContactEt.setText("");
+                    mEmailEt.setText("");
+                    mDateEt.setText("");
+                    mTimeEt.setText("");
+                    mLocation.setText("");
+                    Toast.makeText(this, "Report registered successfully.", Toast.LENGTH_SHORT).show();
+                }
         }
     }
 

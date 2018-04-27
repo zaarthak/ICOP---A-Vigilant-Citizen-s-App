@@ -21,13 +21,17 @@ import java.util.ArrayList;
 
 public class CallAdapter extends RecyclerView.Adapter<CallAdapter.CallViewHolder> {
 
+    int type;
+
     private ArrayList<Police> mCallList = new ArrayList<>();
+
     private Context mContext;
 
-    public CallAdapter(Context context, ArrayList<Police> list) {
+    public CallAdapter(Context context, ArrayList<Police> list, int type) {
 
         mContext = context;
         mCallList = list;
+        this.type = type;
     }
 
     @Override
@@ -73,6 +77,12 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.CallViewHolder
         }
 
         void bindView(Police police) {
+
+            if (type == 3) {
+
+                mPostTv.setVisibility(View.GONE);
+                mMessageBtn.setVisibility(View.GONE);
+            }
 
             mNameTv.setText(police.getName());
             mPostTv.setText(police.getPost());

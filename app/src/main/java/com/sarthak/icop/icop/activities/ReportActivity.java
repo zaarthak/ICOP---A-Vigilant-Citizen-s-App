@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +34,6 @@ public class ReportActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button mCategoryList;
     private EditText mInformationEt, mContactEt;
-    private ImageView mImageView;
     private Button mSendBtn;
 
     private DatabaseReference mDatabase;
@@ -52,7 +50,6 @@ public class ReportActivity extends AppCompatActivity implements View.OnClickLis
         mCategoryList = findViewById(R.id.category_list);
         mInformationEt = findViewById(R.id.complaint);
         mContactEt = findViewById(R.id.contact);
-        mImageView = findViewById(R.id.report_image);
         mSendBtn = findViewById(R.id.send_btn);
 
         initCategoryItems();
