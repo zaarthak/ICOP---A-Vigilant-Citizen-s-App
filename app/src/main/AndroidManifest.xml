@@ -23,20 +23,26 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CallActivity" />
+        <activity android:name=".activities.CallActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ReportActivity"
-            android:label="Report an Incident" />
-        <activity android:name=".activities.ReportFetchActivity" />
-        <activity android:name=".activities.ViewReportActivity" />
-        <activity android:name=".activities.WebActivity" />
+            android:label="Report an Incident"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.ReportFetchActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.ViewReportActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.WebActivity"
+            android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,17 +57,22 @@
 
         <activity
             android:name=".activities.MapsActivity"
-            android:label="My Safe Zone" />
+            android:label="My Safe Zone"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat" />
+            android:theme="@style/Base.Theme.AppCompat"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ReportLostArticleActivity"
-            android:label="Report Lost Article" />
+            android:label="Report Lost Article"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.TowedVehicleActivity"
-            android:label="Towed Vehicle Search"/>
+            android:label="Towed Vehicle Search"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.SosActivity"
-            android:label="Help Me !!"/>
+            android:label="Help Me !!"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
