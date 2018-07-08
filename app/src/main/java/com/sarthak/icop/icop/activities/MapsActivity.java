@@ -170,6 +170,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 deleteMarkerList();
                 mMap.clear();
+                getDeviceLocation();
                 break;
         }
         return true;
@@ -288,8 +289,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                     mMap.addPolyline(line);
                 }
-
-                System.out.println(point.latitude+"---"+ point.longitude);
             }
         });
 
@@ -620,5 +619,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         editor.remove("list");
         editor.apply();
+
+        markerList.clear();
     }
 }

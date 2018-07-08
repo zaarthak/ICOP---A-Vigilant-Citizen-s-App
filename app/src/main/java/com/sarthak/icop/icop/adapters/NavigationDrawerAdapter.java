@@ -20,8 +20,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.NavigationDrawerViewHolder> {
 
-    private boolean headsetStatus;
-
     private ArrayList<String> itemList = new ArrayList<>();
     private ArrayList<Integer> imageList = new ArrayList<>();
 
@@ -57,10 +55,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             @Override
             public void onClick(View view) {
 
-                if (holder.getAdapterPosition() == 6) {
-
-                    mListener.onItemClicked(view, holder.getAdapterPosition());
-                }
+                mListener.onItemClicked(view, holder.getAdapterPosition());
             }
         });
     }
@@ -84,61 +79,112 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             mToggleBtn = itemView.findViewById(R.id.on_off_btn);
         }
 
-        void bindView(int pos, String label, int image) {
+        void bindView(final int pos, String label, int image) {
 
             mLabelTv.setText(label);
             Picasso.with(mContext)
                     .load(image)
                     .into(mImage);
 
-            if (pos == 0 || pos == 1 || pos == 2 || pos == 3) {
+            if (pos == 0 || pos == 1 || pos == 2 || pos == 3 || pos == 4) {
                 mToggleBtn.setVisibility(View.VISIBLE);
             } else {
                 mToggleBtn.setVisibility(View.GONE);
             }
 
-            if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null) == null) {
+            if (pos == 0) {
 
-                mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
-            }
-
-            if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null) != null) {
-
-                if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null).equals("true")) {
-
-                    mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
-                } else {
+                if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", null) == null) {
 
                     mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
                 }
+
+                if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", null) != null) {
+
+                    if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", "").equals("true")) {
+
+                        mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
+                    } else {
+
+                        mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
+                    }
+                }
             }
 
+            if (pos == 3) {
+
+                if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", null) == null) {
+
+                    mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
+                }
+
+                if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", null) != null) {
+
+                    if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", "").equals("true")) {
+
+                        mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
+                    } else {
+
+                        mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
+                    }
+                }
+            }
 
             mToggleBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("SOS", MODE_PRIVATE).edit();
+                    if (pos == 0) {
 
-                    if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null) == null) {
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("SOS", MODE_PRIVATE).edit();
 
-                        mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
-                        editor.putString("status", "true");
-                        editor.apply();
-                    }
-
-                    if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null) != null) {
-
-                        if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("status", null).equals("true")) {
-
-                            mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
-                            editor.putString("status", "false");
-                            editor.apply();
-                        } else {
+                        if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", null) == null) {
 
                             mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
-                            editor.putString("status", "true");
+                            editor.putString("shake", "true");
                             editor.apply();
+                        }
+
+                        if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", null) != null) {
+
+                            if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("shake", "").equals("true")) {
+
+                                mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
+                                editor.putString("shake", "false");
+                                editor.apply();
+                            } else {
+
+                                mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
+                                editor.putString("shake", "true");
+                                editor.apply();
+                            }
+                        }
+                    }
+
+                    if (pos == 3) {
+
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("SOS", MODE_PRIVATE).edit();
+
+                        if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", null) == null) {
+
+                            mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
+                            editor.putString("power", "true");
+                            editor.apply();
+                        }
+
+                        if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", null) != null) {
+
+                            if (mContext.getSharedPreferences("SOS", MODE_PRIVATE).getString("power", "").equals("true")) {
+
+                                mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.offbutton));
+                                editor.putString("power", "false");
+                                editor.apply();
+                            } else {
+
+                                mToggleBtn.setImageDrawable(mContext.getResources().getDrawable(R.drawable.onbutton));
+                                editor.putString("power", "true");
+                                editor.apply();
+                            }
                         }
                     }
                 }

@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -13,6 +13,7 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
@@ -77,6 +78,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashScreenActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -86,15 +88,32 @@
         </activity>
         <activity
             android:name=".activities.NearbyPlacesActivity"
-            android:label="Nearby Places" />
+            android:label="Nearby Places"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FareCalculatorActivity"
-            android:label="Fare Calculator" />
+            android:label="Fare Calculator"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PathikActivity"
-            android:label="Pathik" />
-        <activity android:name=".activities.InformActivity"
-            android:label="Pathik" />
+            android:label="Pathik"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.InformActivity"
+            android:label="Pathik"
+            android:screenOrientation="portrait" />
+
+        <receiver android:name=".utils.PowerButtonReceiver" />
+
+        <!-- Crop Image Activity -->
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".activities.EmergencyActivity"
+            android:label="Help Me !!"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.UberActivity"></activity>
     </application>
 
 </manifest>

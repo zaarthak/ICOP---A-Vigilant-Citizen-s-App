@@ -7,13 +7,14 @@ public class Report implements Serializable {
     private String id;
     private String category;
     private String information;
+    private String image;
     private String contact;
     private String status;
 
     public Report() {
     }
 
-    public Report(String id, String category, String information, String contact, String status) {
+    public Report(String id, String category, String information, String image, String contact, String status) {
         this.id = id;
         this.category = category;
         this.information = information;
@@ -43,6 +44,14 @@ public class Report implements Serializable {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getContact() {

@@ -1,6 +1,7 @@
 package com.sarthak.icop.icop.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.sarthak.icop.icop.R;
 
@@ -50,6 +52,10 @@ public class SosActivity extends AppCompatActivity implements View.OnClickListen
                     editor.putString("contact", contact);
                     editor.putString("message", message);
                     editor.apply();
+                    Toast.makeText(this, "Alert message registered successfully.", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Toast.makeText(this, "Please enter complete details to continue.", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -91,7 +97,13 @@ public class SosActivity extends AppCompatActivity implements View.OnClickListen
 
         SharedPreferences prefs = getSharedPreferences("SOS", MODE_PRIVATE);
 
-        mContactEt.setText(prefs.getString("contact", null));
-        mMessageEt.setText(prefs.getString("message", null));
+        if (prefs.getString("contact", null) != null &&
+                prefs.getString("message", null) != null) {
+
+            startActivity(new Intent(SosActivity.this, EmergencyActivity.class));
+            finish();
+        }
+        //mContactEt.setText(prefs.getString("contact", null));
+        //mMessageEt.setText(prefs.getString("message", null));
     }
 }

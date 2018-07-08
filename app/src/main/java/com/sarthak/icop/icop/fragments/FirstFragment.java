@@ -16,6 +16,7 @@ import com.sarthak.icop.icop.activities.PathikActivity;
 import com.sarthak.icop.icop.activities.ReportLostArticleActivity;
 import com.sarthak.icop.icop.activities.SosActivity;
 import com.sarthak.icop.icop.activities.TimerActivity;
+import com.sarthak.icop.icop.activities.UberActivity;
 import com.sarthak.icop.icop.adapters.FragmentGridAdapter;
 import com.sarthak.icop.icop.R;
 import com.sarthak.icop.icop.utils.RecyclerViewOnClickListener;

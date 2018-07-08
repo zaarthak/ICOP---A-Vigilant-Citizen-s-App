@@ -1,8 +1,6 @@
 package com.sarthak.icop.icop.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,11 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.sarthak.icop.icop.R;
 import com.sarthak.icop.icop.activities.DeveloperInfoActivity;
-import com.sarthak.icop.icop.activities.HomeActivity;
+import com.sarthak.icop.icop.activities.UberActivity;
 import com.sarthak.icop.icop.adapters.NavigationDrawerAdapter;
 import com.sarthak.icop.icop.utils.RecyclerViewOnClickListener;
 
@@ -52,7 +49,9 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerViewOn
         itemList.add("Shake to send Help\nMe! message");
         itemList.add("Proximity Sensor");
         itemList.add("My Safe Zone");
+        itemList.add("Help me! with 3 times\nPower Button Press");
         itemList.add("Headset Plugged and\nUnplugged");
+        itemList.add("Book a Cab");
         itemList.add("Share ICOP App");
         itemList.add("About ICOP");
         itemList.add("Developer Info");
@@ -60,9 +59,11 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerViewOn
         itemList.add("Usage Tips");
 
         imageList.add(R.drawable.shake_to_send);
-        imageList.add(R.drawable.shake_to_send);
-        imageList.add(R.drawable.shareicons);
-        imageList.add(R.drawable.abouticon);
+        imageList.add(R.drawable.proximity_sensor);
+        imageList.add(R.drawable.safe_zone);
+        imageList.add(R.drawable.help_me_timer);
+        imageList.add(R.drawable.headset);
+        imageList.add(R.drawable.uber);
         imageList.add(R.drawable.shareicons);
         imageList.add(R.drawable.abouticon);
         imageList.add(R.drawable.developericon);
@@ -73,6 +74,15 @@ public class NavigationDrawerFragment extends Fragment implements RecyclerViewOn
     @Override
     public void onItemClicked(View view, int position) {
 
-        startActivity(new Intent(getActivity(), DeveloperInfoActivity.class));
+        switch (position) {
+
+            case 5:
+                startActivity(new Intent(getActivity(), UberActivity.class));
+                break;
+
+            case 8:
+                startActivity(new Intent(getActivity(), DeveloperInfoActivity.class));
+                break;
+        }
     }
 }

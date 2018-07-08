@@ -5,30 +5,37 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashScreenActivity">
 
-    <com.sarthak.icop.icop.utils.SquareImageView
-        android:id="@+id/icon"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/ic_launcher"/>
-
-    <TextView
-        android:id="@+id/app_label"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ICOP-A vigilant citizen's app"
-        android:textSize="30dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@+id/icon"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerInParent="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Defining New Boundaries with our Authorities"
-        android:textSize="18sp"
-        android:textColor="@color/splashScreenColor"
-        android:layout_below="@+id/app_label"
-        android:layout_centerHorizontal="true" />
+        <com.sarthak.icop.icop.utils.SquareImageView
+            android:id="@+id/icon"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/app_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ICOP-A vigilant citizen's app"
+            android:textSize="26sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@+id/icon"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defining New Boundaries with our Authorities"
+            android:textSize="15sp"
+            android:textColor="@color/splashScreenColor"
+            android:layout_below="@+id/app_label"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

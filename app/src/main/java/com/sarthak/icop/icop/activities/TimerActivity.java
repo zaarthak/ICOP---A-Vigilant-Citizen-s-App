@@ -1,8 +1,14 @@
 package com.sarthak.icop.icop.activities;
 
+import android.content.DialogInterface;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,9 +16,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.sarthak.icop.icop.R;
 
 public class TimerActivity extends AppCompatActivity implements OnClickListener {
+
+    String latitude, longitude;
 
     int timerFlag = 0;
 
@@ -27,7 +39,12 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
     private long timeBlinkInMilliseconds; // start time of start blinking
     private boolean blink; // controls the blinking .. on and off
 
-    /** Called when the activity is first created. */
+    // The entry point to the Fused Location Provider.
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+    // The geographical location where the device is currently located. That is, the last-known
+    // location retrieved by the Fused Location Provider.
+    private Location mLastKnownLocation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +58,11 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
         mSecondEt = findViewById(R.id.second_et);
 
         buttonStartTime.setOnClickListener(this);
+
+        // Construct a FusedLocationProviderClient.
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(TimerActivity.this);
+
+        getDeviceLocation();
     }
 
     @Override
@@ -51,13 +73,21 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
 
                 if (timerFlag == 0) {
 
-                    setTimer();
-                    startTimer();
-                    mHourEt.setFocusable(false);
-                    mMinuteEt.setFocusable(false);
-                    mSecondEt.setFocusable(false);
-                    buttonStartTime.setText("STOP TIMER");
-                    timerFlag = 1;
+                    if (!mHourEt.getText().toString().equals("00") ||
+                            !mMinuteEt.getText().toString().equals("00") ||
+                            !mSecondEt.getText().toString().equals("00")) {
+
+                        setTimer();
+                        startTimer();
+                        mHourEt.setFocusable(false);
+                        mMinuteEt.setFocusable(false);
+                        mSecondEt.setFocusable(false);
+                        buttonStartTime.setText("STOP TIMER");
+                        timerFlag = 1;
+                    } else {
+
+                        Toast.makeText(this, "Please initialise the timer.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
 
                     countDownTimer.cancel();
@@ -108,6 +138,7 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
     }
 
     private void startTimer() {
+
         countDownTimer = new CountDownTimer(totalTimeCountInMilliseconds, 500) {
             // 500 means, onTick function will be called at every 500
             // milliseconds
@@ -120,6 +151,7 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
                     mHourEt.setTextAppearance(getApplicationContext(), R.style.blinkText);
                     mMinuteEt.setTextAppearance(getApplicationContext(), R.style.blinkText);
                     mSecondEt.setTextAppearance(getApplicationContext(), R.style.blinkText);
+
                     // change the style of the textview .. giving a red
                     // alert style
 
@@ -155,11 +187,92 @@ public class TimerActivity extends AppCompatActivity implements OnClickListener 
                 mHourEt.setTextAppearance(getApplicationContext(), R.style.normalText);
                 mMinuteEt.setTextAppearance(getApplicationContext(), R.style.normalText);
                 mSecondEt.setTextAppearance(getApplicationContext(), R.style.normalText);
-                Toast.makeText(TimerActivity.this, "Message sent successfully.", Toast.LENGTH_SHORT).show();
+                buttonStartTime.setText("START TIMER");
+                mHourEt.setFocusable(true);
+                mHourEt.setFocusableInTouchMode(true);
+                mMinuteEt.setFocusable(true);
+                mMinuteEt.setFocusableInTouchMode(true);
+                mSecondEt.setFocusable(true);
+                mSecondEt.setFocusableInTouchMode(true);
+                timerFlag = 0;
+
+                if (getSharedPreferences("SOS", MODE_PRIVATE).getString("contact", null) != null) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TimerActivity.this);
+                    builder.setMessage("Do you want to send alert message to " + getSharedPreferences("SOS", MODE_PRIVATE).getString("contact", null) + "?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    String contact = getSharedPreferences("SOS", MODE_PRIVATE).getString("contact", "");
+                                    String message = getSharedPreferences("SOS", MODE_PRIVATE).getString("message", "")
+                                            + "\n\nhttp://www.google.com/maps/place/"+latitude+","+longitude;
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage(contact, null, message, null, null);
+                                    Log.d("MESSAGE", message);
+                                    Toast.makeText(TimerActivity.this, "An alert message has been sent to " + getSharedPreferences("SOS", MODE_PRIVATE).getString("contact", null), Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //do nothing
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                } else {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TimerActivity.this);
+                    builder.setMessage("Please register a Contact and Alert message in SOS.")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do things
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
             }
 
         }.start();
+    }
 
+    /**
+     * Gets the current location of the device, and positions the map's camera.
+     */
+    public void getDeviceLocation() {
+        /*
+         * Get the best and most recent location of the device, which may be null in rare
+         * cases when a location is not available.
+         */
+        try {
+            Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
+            locationResult.addOnCompleteListener(TimerActivity.this, new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+
+                    if (task.isSuccessful()) {
+                        // Set the map's camera position to the current location of the device.
+                        mLastKnownLocation = task.getResult();
+                        if (mLastKnownLocation != null) {
+
+                            latitude = String.valueOf(mLastKnownLocation.getLatitude());
+                            longitude = String.valueOf(mLastKnownLocation.getLongitude());
+                        } else {
+
+                            getDeviceLocation();
+                        }
+                    } else {
+                        Log.e("TAG", "Exception: %s", task.getException());
+                    }
+                }
+            });
+
+        } catch (SecurityException e)  {
+            Log.e("Exception: %s", e.getMessage());
+        }
     }
 }
 

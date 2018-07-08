@@ -9,12 +9,9 @@
         android:id="@+id/developer_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_margin="10dp"
-        android:text="The app has been made by Laksh Dua .There has been a great deal of work put into it and has been
-made after proper research and analysis.\n\nThe app basically contains 18 modules which have various
-different features and have properly been tested as well as used. The app is revolutionary product in the
-field of crime reporting as well as women safety. It is sure to establish huge goals as well a establish a
+        android:text="The app has been made by Laksh Dua .There has been a great deal of work put into it and has been made after proper research and analysis.\n\nThe app basically contains 18 modules which have various
+different features and have properly been tested as well as used. The app is revolutionary product in the field of crime reporting as well as women safety. It is sure to establish huge goals as well a establish a
 new kind of system to our Authorities and people.\n\nIt is sure to bring a change in the way people interact with the government authorities, as well as it
 increases the transparency between the authorities and people." />
 
